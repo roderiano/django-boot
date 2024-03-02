@@ -1,0 +1,56 @@
+{% load i18n %}
+<div class="actions">
+  {% block actions %}
+    <div class="container-fluid">
+      <div class="row justify-content-start align-items-end mb-3">
+        <div class="col-3">
+          <div class="input-group input-group-sm">
+            {% block actions-form %}
+              {% for field in action_form %}
+                {% if field.label %}
+                  <select class="form-select form-select-sm" name="{{ field.name }}">
+                    {% for choice in field.field.widget.choices %}
+                      <option value="{{ choice.0 }}"
+                              {% if choice.0|stringformat:"s" == field.value|stringformat:"s" %}selected{% endif %}>
+                        {{ choice.1 }}
+                      </option>
+                    {% endfor %}
+                  </select>
+                {% else %}
+                  {{ field }}
+                {% endif %}
+              {% endfor %}
+            {% endblock %}
+            {% block actions-submit %}
+              <button type="submit"
+                      class="btn btn-outline-primary btn-sm"
+                      title="{% translate "Run the selected action" %}"
+                      name="index"
+                      value="{{ action_index|default:0 }}">{% translate "Go" %}</button>
+            {% endblock %}
+          </div>
+        </div>
+        <div class="col-2">
+          {% block actions-counter %}
+            {% if actions_selection_counter %}
+              <span class="action-counter text-muted small"
+                    data-actions-icnt="{{ cl.result_list|length }}">{{ selection_note }}</span>
+              {% if cl.result_count != cl.result_list|length %}
+                <span class="all d-none">{{ selection_note_all }}</span>
+                <span class="question d-none">
+                  <a href="#"
+                     title="{% translate "Click here to select the objects across all pages" %}">
+                    {% blocktranslate with cl.result_count as total_count %}
+                Select all {{ total_count }} {{ module_name }}
+              {% endblocktranslate %}
+                  </a>
+                </span>
+                <span class="clear d-none"><a href="#">{% translate "Clear selection" %}</a></span>
+              {% endif %}
+            {% endif %}
+          {% endblock %}
+        </div>
+      {% endblock %}
+    </div>
+  </div>
+</div>

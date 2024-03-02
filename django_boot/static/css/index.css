@@ -1,0 +1,8 @@
+.card-body {
+    padding: 0px;
+}
+
+div.card-body > ul > li{
+    border: 0px !important;
+    padding: 0.4rem 0.7rem;
+}

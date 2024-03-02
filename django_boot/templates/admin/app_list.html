@@ -1,0 +1,53 @@
+{% load i18n %}
+{% if app_list %}
+  <div class="row">
+    {% for app in app_list %}
+      <div class="col mb-4">
+        <div class="card">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <a href="{{ app.app_url }}" class="card-link text-center w-100">{% blocktranslate with name=app.name %}{{ name }}{% endblocktranslate %}</a>
+          </div>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              {% for model in app.models %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <span class="model-name">
+                    {% if model.admin_url %}
+                      <a href="{{ model.admin_url }}" class="card-link">{{ model.name }}</a>
+                    {% else %}
+                      {{ model.name }}
+                    {% endif %}
+                  </span>
+                  <div>
+                    {% if model.add_url %}
+                      <a href="{{ model.add_url }}" class="btn btn-sm btn-outline-primary">
+                        <i class="fas fa-plus"></i>
+                        {% translate 'Add' %}
+                      </a>
+                    {% endif %}
+                    {% if model.admin_url and show_changelinks %}
+                      {% if model.view_only %}
+                        <a href="{{ model.admin_url }}"
+                           class="btn btn-sm btn-outline-secondary ml-1">{% translate 'View' %}</a>
+                      {% else %}
+                        <a href="{{ model.admin_url }}"
+                           class="btn btn-sm btn-outline-secondary ml-1">
+                           <i class="fas fa-pencil-alt"></i>
+                           {% translate 'Change' %}
+                        </a>
+                      {% endif %}
+                    {% elif show_changelinks %}
+                    {% endif %}
+                  </div>
+                </li>
+                {% if not forloop.last %}<hr>{% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <p>{% translate 'You don’t have permission to view or edit anything.' %}</p>
+{% endif %}

@@ -1,0 +1,46 @@
+{% load i18n static %}
+{% if cl.search_fields %}
+    <form id="changelist-search" method="get" role="search">
+        <div class="input-group input-group-sm">
+            <input type="text"
+                   class="form-control"
+                   name="{{ search_var }}"
+                   value="{{ cl.query }}"
+                   placeholder="{% translate 'Search' %}"
+                   aria-label="Search"
+                   aria-describedby="searchbar_helptext">
+            <button class="btn btn-outline-primary" type="submit">
+                <i class="fas fa-search"></i>
+                {% translate 'Search' %}
+            </button>
+            <!-- Button trigger offcanvas -->
+            <button class="btn btn-outline-secondary btn-sm"
+                    type="button"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight"
+                    aria-controls="offcanvasRight">
+                <i class="fas fa-filter"></i>
+            </button>
+        </div>
+        {% if show_result_count %}
+            <div class="text-muted small">
+                {% blocktranslate count counter=cl.result_count %}
+            {{ counter }} result{% plural %}{{ counter }} results
+            {% endblocktranslate %}
+                (<a href="?{% if cl.is_popup %}{{ is_popup_var }}=1{% if cl.add_facets %}&{% endif %}{% endif %}{% if cl.add_facets %}{{ is_facets_var }}{% endif %}">
+                {% if cl.show_full_result_count %}
+                    {% blocktranslate with full_result_count=cl.full_result_count %}
+                {{ full_result_count }} total
+                {% endblocktranslate %}
+                {% else %}
+                    {% translate "Show all" %}
+                {% endif %}
+            </a>)
+        </div>
+    {% endif %}
+    {% for pair in cl.params.items %}
+        {% if pair.0 != search_var %}<input type="hidden" name="{{ pair.0 }}" value="{{ pair.1 }}">{% endif %}
+    {% endfor %}
+    {% if cl.search_help_text %}<div class="form-text">{{ cl.search_help_text }}</div>{% endif %}
+</form>
+{% endif %}

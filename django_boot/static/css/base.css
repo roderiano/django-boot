@@ -1,0 +1,112 @@
+/* Specific style adjustments */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    transition: all 0.3s;
+    z-index: 1000;
+    border-right: 1px solid #dbdbdb;
+}
+
+.sidebar.collapsed {
+    width: 60px;
+    overflow-x: hidden;
+}
+
+.sidebar.collapsed .nav-link {
+    text-align: center;
+}
+
+.sidebar.collapsed .nav-link span {
+    display: none;
+}
+
+.sidebar.collapsed .nav-link i {
+    margin-right: 0;
+}
+
+.content {
+    transition: margin-left 0.3s;
+    padding-top: 40px;
+    margin-left: 290px;
+    width: calc(100% - 330px);
+}
+
+.content.collapsed {
+    margin-left: 60px;
+    width: calc(100% - 60px);
+}
+
+.navbar {
+    transition: margin-left 0.3s;
+    position: relative;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.navbar .searchbar {
+    width: 250px;
+    position: absolute;
+    top: 50%;
+    right: 100px;
+    transform: translateY(-50%);
+}
+
+hr {
+    margin: 0.1rem;
+    border: 0;
+    border-top: 1px solid rgb(0, 0, 0);
+}
+
+.collapse-button {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.nav-item.disabled {
+    display: none;
+}
+
+.nav-item.list-group-item {
+    border-radius: 0px !important;
+    padding: 0.1rem 0rem;
+}
+
+#content>h2 {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+#sidebar>ul>li>a {
+    padding: 10px;
+}
+
+.logo {
+    width: 40px;
+    height: auto;
+}
+
+.collapsed-logo {
+    display: block;
+}
+
+.sidebar.collapsed >  div.navbar > a > .expanded-app-name {
+    display: none;
+}
+
+.breadcrumb {
+    padding: 0.5rem;
+    border: 1px solid #dbdbdb;
+}
+
+fieldset {
+    padding: 0px;
+}
+
+form > div > .card {
+    margin-top: 15px;
+    padding: 10px;
+}

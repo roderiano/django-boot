@@ -1,0 +1,70 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" href="/static/css/index.css">
+{% endblock %}
+{% block coltype %}col-ms{% endblock %}
+{% block bodyclass %}{{ block.super }} dashboard{% endblock %}
+{% block nav-breadcrumbs %}{% endblock %}
+{% block nav-sidebar %}{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div id="content-main" class="col-md-8">
+                {% include "admin/app_list.html" with app_list=app_list show_changelinks=True %}
+            </div>
+            <div id="content-related" class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">{% translate 'Recent actions' %}</h5>
+                    </div>
+                    <div class="card-body">
+                        {% load log %}
+                        {% get_admin_log 10 as admin_log for_user user %}
+                        {% if not admin_log %}
+                            <p class="card-text">{% translate 'None available' %}</p>
+                        {% else %}
+                            <ul class="list-group">
+                                {% for entry in admin_log %}
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <span>
+                                            <span>
+                                                {% if entry.is_addition %}
+                                                    {% translate 'Added:' %}
+                                                {% elif entry.is_change %}
+                                                    {% translate 'Changed:' %}
+                                                {% elif entry.is_deletion %}
+                                                    {% translate 'Deleted:' %}
+                                                {% endif %}
+                                            </span>
+                                            {% if entry.is_deletion or not entry.get_admin_url %}
+                                                {{ entry.object_repr }}
+                                            {% else %}
+                                                <a href="{{ entry.get_admin_url }}">{{ entry.object_repr }}</a>
+                                            {% endif %}
+                                            <br>
+                                            {% if entry.content_type %}
+                                                <span class="text-muted">
+                                                    {% filter capfirst %}
+                                                        {{ entry.content_type.name }}
+                                                    {% endfilter %}
+                                                </span>
+                                            {% else %}
+                                                <span class="text-muted">{% translate 'Unknown content' %}</span>
+                                            {% endif %}
+                                        </span>
+                                        <span class="float-right">
+                                            <i class="fas {% if entry.is_addition %} fa-save text-success {% elif entry.is_change %} fa-pencil-alt text-primary {% elif entry.is_deletion %} fa-trash-alt text-danger {% endif %}"></i>
+                                        </span>
+                                    </li>
+                                    {% if not forloop.last %}<hr>{% endif %}
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

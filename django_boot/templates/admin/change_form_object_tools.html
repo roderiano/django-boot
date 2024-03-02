@@ -1,0 +1,14 @@
+{% load i18n admin_urls %}
+{% block object-tools-items %}
+    <div class="row justify-content-end align-items-end">
+        {% url opts|admin_urlname:'history' original.pk|admin_urlquote as history_url %}
+        <a href="{% add_preserved_filters history_url %}"
+           class="btn btn-outline-primary btn-sm col-1">
+            <i class="fas fa-history"></i>
+            {% translate "History" %}
+        </a>
+        {% if has_absolute_url %}
+            <a href="{{ absolute_url }}" class="btn btn-outline-secondary">{% translate "View on site" %}</a>
+        {% endif %}
+    </div>
+{% endblock %}

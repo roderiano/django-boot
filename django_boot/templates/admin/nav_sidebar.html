@@ -1,0 +1,39 @@
+<div class="sidebar bg-light" id="sidebar">
+    <div class="navbar d-flex align-items-center justify-content-center">
+        <a href="/admin/" class="navbar-brand">
+            <img src="/static/img/logo.png" alt="Logo" class="logo">
+            <span class="expanded-app-name">{{ site_title|default:_("Django site admin") }}</span>
+        </a>
+    </div>
+    <ul class="navbar-nav flex-column">
+        {% if available_apps %}
+            {% for app in available_apps %}
+                <li class="nav-item">
+                    <a class="nav-link text-secondary"
+                       href="#"
+                       data-bs-toggle="collapse"
+                       data-bs-target="#{{ app.app_label }}">
+                        <i class="fas fa-home"></i>
+                        <span>{{ app.name }}</span>
+                        <i class="fas fa-chevron-down float-end"></i>
+                    </a>
+                    <ul class="navbar-nav list-group collapse" id="{{ app.app_label }}">
+                        {% for model in app.models %}
+                            <li class="nav-item list-group-item list-group-item-action">
+                                <a class="nav-link" href="{{ model.admin_url }}">{{ model.name }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        {% else %}
+            <p>You don't have permission to view or edit anything.</p>
+        {% endif %}
+    </ul>
+    <div class="collapse-button">
+        <hr />
+        <button class="btn" id="sidebarCollapse">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+    </div>
+</div>

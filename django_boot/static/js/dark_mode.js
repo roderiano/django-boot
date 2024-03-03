@@ -1,6 +1,6 @@
 'use strict';
 {
-    window.addEventListener('load', function(e) {
+    window.addEventListener('load', function (e) {
         function setTheme(mode) {
             if (mode !== "light" && mode !== "dark" && mode !== "auto") {
                 console.error(`Got invalid theme mode: ${mode}. Resetting to auto.`);
@@ -8,12 +8,22 @@
             }
             document.documentElement.setAttribute("data-bs-theme", mode);
             localStorage.setItem("theme", mode);
+
+            const moonIcon = document.querySelector('#darkModeToggle > i');
+            if (moonIcon) {
+                if (mode === 'dark') {
+                    moonIcon.className = 'fas fa-sun';
+                } else if (mode === 'light') {
+                    moonIcon.className = 'fas fa-moon';
+                } else {
+                    moonIcon.className = 'fas fa-circle';
+                }
+            }
         }
 
         function cycleTheme() {
             const currentTheme = localStorage.getItem("theme") || "auto";
             const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-            console.log(currentTheme);
 
             if (prefersDark) {
                 // Auto (dark) -> Light -> Dark

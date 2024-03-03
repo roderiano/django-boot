@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="django_boot/static/img/logo.png" alt="Logo" width="400">
+  <img src="django_boot/static/img/logo.png" alt="Logo" width="250px">
 </p>
 
 DjangoBoot

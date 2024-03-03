@@ -7,7 +7,6 @@
     width: 250px;
     transition: all 0.3s;
     z-index: 1000;
-    border-right: 1px solid #dbdbdb;
 }
 
 .sidebar.collapsed {
@@ -42,7 +41,6 @@
 .navbar {
     transition: margin-left 0.3s;
     position: relative;
-    border-bottom: 1px solid #dbdbdb;
 }
 
 .navbar .searchbar {
@@ -99,7 +97,6 @@ hr {
 
 .breadcrumb {
     padding: 0.5rem;
-    border: 1px solid #dbdbdb;
 }
 
 fieldset {

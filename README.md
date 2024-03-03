@@ -1,17 +1,16 @@
-<p align="center">
-  <img src="django_boot/static/img/logo.png" alt="Logo" width="200px">
-</p>
+<div align="center">
+  <img src="https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpiha9Ty2m5RaI_FiohDISSAXRNC7gy4VsN4TG5taO95mtGCdGX9gbGXZ3mLwB7MbbdvEiCRn0cnos0GIHFFkbwsjol4u-Lw=w3584-h1816" alt="Logo" width="100px" style="display: inline-block; vertical-align: middle;">
+  <h1 style="display: inline-block; vertical-align: middle; margin-left: 10px;">django-boot</h1>
+</div>
 
-DjangoBoot
-=========================
 
-Django Boot is a Django app framework designed for styling the admin interface with Bootstrap 5.
+django-boot is a Django app framework designed for styling the admin interface with Bootstrap 5.
 
 ## Getting Started
 
 ### Installation
 
-1. You can install DjangoBoot via pip:
+1. You can install django-boot via pip:
 
     ```bash
     pip install django-boot
@@ -19,19 +18,37 @@ Django Boot is a Django app framework designed for styling the admin interface w
     
 ## Usage
 
-To use Django Boot in your Django project, follow these steps:
+To use django-boot in your Django project, follow these steps:
 
 1. Add `django_boot` to the INSTALLED_APPS in your settings.py file:
 
 ```python3
 INSTALLED_APPS = [
     ...,
-    "django_boot.apps.DjangoBootConfig",
+    "django_boot.apps.django-bootConfig",
     ...
 ]
 ```
 
-**If you encounter any issues or have questions, feel free to open an issue for assistance.**
+**::warning:: If you encounter any issues or have questions, feel free to open an issue for assistance.**
+
+
+## Features
+
+- **Automatic Dark Mode**
+
+- **Dynamic Form Styling**
+
+- **Alert Styling**
+
+- **Dynamic Sidebar**
+
+- **Interactive Side Filters**
+
+<p align="center">
+  <img src="https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpiha84RmWCKrO4FPYthfL4AfwLuQpCWJyjg2jksP84U6euTQ4cSduMCTuH-6PQc7PppA8KoZHiOvIBW7urUXNkq7-36AQ=w1360-h633" alt="Logo" width="100%">
+</p>
+
 
 
 ## Contributing
@@ -71,14 +88,14 @@ For implementing new features or fixing bugs:
 
 8. Your pull request will be reviewed, and once approved, it will be merged.
 
-Thank you for contributing to DjangoBoot!
+Thank you for contributing to django-boot!
 
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
 
 ## Acknowledgments
-DjangoBoot provides integration with the components and styles provided by Bootstrap, allowing you to easily create attractive and responsive user interfaces. Additionally, you can find additional resources such as usage examples and detailed documentation on the official Bootstrap and Django website.
+django-boot provides integration with the components and styles provided by Bootstrap, allowing you to easily create attractive and responsive user interfaces. Additionally, you can find additional resources such as usage examples and detailed documentation on the official Bootstrap and Django website.
 - [License](https://github.com/roderiano/django-boot/blob/main/LICENSE)
 - [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
 - [Django Reusable Apps](https://docs.djangoproject.com/en/5.0/intro/reusable-apps/)

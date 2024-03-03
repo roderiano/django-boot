@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="django_boot/static/img/logo.png" alt="Logo" width="250px">
+  <img src="django_boot/static/img/logo.png" alt="Logo" width="200px">
 </p>
 
 DjangoBoot
@@ -8,10 +8,6 @@ DjangoBoot
 Django Boot is a Django app framework designed for styling the admin interface with Bootstrap 5.
 
 ## Getting Started
-
-### Prerequisites
-
-- Google Chrome browser
 
 ### Installation
 

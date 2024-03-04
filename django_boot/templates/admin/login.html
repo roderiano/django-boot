@@ -1,77 +1,80 @@
-{% extends "admin/base_site.html" %}
+{% extends "admin/base.html" %}
 {% load i18n static %}
-
 {% block extrastyle %}
     {{ block.super }}
-    <link rel="stylesheet" href="{% static "admin/css/login.css" %}">
     {{ form.media }}
+    <style>
+        .centered-content {
+            position: fixed;
+            width: 30%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .form-floating {
+            margin-bottom: 20px;
+        }
+    </style>
 {% endblock %}
-
 {% block bodyclass %}{{ block.super }} login{% endblock %}
-
 {% block usertools %}{% endblock %}
-
 {% block nav-global %}{% endblock %}
-
 {% block nav-sidebar %}{% endblock %}
-
 {% block content_title %}{% endblock %}
-
 {% block nav-breadcrumbs %}{% endblock %}
-
 {% block content %}
-    {% if form.errors and not form.non_field_errors %}
-        <p class="errornote">
-            {% blocktranslate count counter=form.errors.items|length %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktranslate %}
-        </p>
-    {% endif %}
-
-    {% if form.non_field_errors %}
-        {% for error in form.non_field_errors %}
-            <p class="errornote">
-                {{ error }}
-            </p>
-        {% endfor %}
-    {% endif %}
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
+    <div class="centered-content">
+        {% if form.errors or form.non_field_errors %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert"
+                        aria-label="Close"></button>
+                {% if form.errors %}
+                    {% blocktranslate count counter=form.errors.items|length %}
+                    Please correct the error below.
+                {% plural %}
+                    Please correct the errors below.
+                {% endblocktranslate %}
+                {% endif %}
+                {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}{{ error }}{% endfor %}
+                {% endif %}
+            </div>
+        {% endif %}
+        <main class="form-signin">
+            <form action="{{ app_path }}" method="post" id="login-form">
+                {% csrf_token %}
                 <div class="card">
                     <div class="card-body">
-                        {% if user.is_authenticated %}
-                            <p class="errornote">
-                                {% blocktranslate trimmed %}
-                                    You are authenticated as {{ username }}, but are not authorized to
-                                    access this page. Would you like to login to a different account?
-                                {% endblocktranslate %}
-                            </p>
-                        {% endif %}
-
-                        <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
-                            <div class="form-group">
-                                {{ form.username.errors }}
-                                {{ form.username.label_tag }} {{ form.username }}
-                            </div>
-                            <div class="form-group">
-                                {{ form.password.errors }}
-                                {{ form.password.label_tag }} {{ form.password }}
-                                <input type="hidden" name="next" value="{{ next }}">
-                            </div>
-                            {% url 'admin_password_reset' as password_reset_url %}
-                            {% if password_reset_url %}
-                                <div class="password-reset-link">
-                                    <a href="{{ password_reset_url }}">{% translate 'Forgotten your password or username?' %}</a>
-                                </div>
-                            {% endif %}
-                            <div class="form-group text-center">
-                                <button type="submit" class="btn btn-primary">{% translate 'Log in' %}</button>
-                            </div>
-                        </form>
+                        <div class="d-flex justify-content-center align-items-center">
+                            <img class="mb-4" src="/static/img/logo.png" alt="" width="72" height="57">
+                            <h1 class="h3 mb-3 fw-normal">{% translate 'Please sign in' %}</h1>
+                        </div>
+                        <div class="form-floating">
+                            {{ form.username.errors }}
+                            <input type="text" class="form-control" id="floatingInput" name="username">
+                            <label for="floatingInput">{% translate 'Username' %}</label>
+                        </div>
+                        <div class="form-floating">
+                            {{ form.password.errors }}
+                            <input type="password"
+                                   class="form-control"
+                                   id="floatingPassword"
+                                   name="password">
+                            <label for="floatingPassword">{% translate 'Password' %}</label>
+                            <input type="hidden" name="next" value="{{ next }}">
+                        </div>
+                        <div class="checkbox mb-3">
+                            <label>
+                                <input type="checkbox" value="remember-me">
+                                {% translate 'Remember me' %}
+                            </label>
+                        </div>
+                        <button class="w-100 btn btn-lg btn-outline-primary" type="submit">{% translate 'Sign in' %}</button>
                     </div>
                 </div>
-            </div>
-        </div>
+            </form>
+        </main>
     </div>
 {% endblock %}
-

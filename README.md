@@ -30,7 +30,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-**::warning:: If you encounter any issues or have questions, feel free to open an issue for assistance.**
+**If you encounter any issues or have questions, feel free to open an issue for assistance.**
 
 
 ## Features

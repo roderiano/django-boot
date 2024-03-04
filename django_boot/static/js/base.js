@@ -12,4 +12,9 @@ $(document).ready(function () {
     $('.collapse.show').not($(this).next('.collapse')).collapse('hide');
     $(this).find('.fas').toggleClass('fa-chevron-down fa-chevron-up');
   });
+
+  // Spinner code
+  setTimeout(function () {
+    $('.overlay').hide();
+  }, 80);
 });

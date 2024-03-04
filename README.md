@@ -45,6 +45,8 @@ INSTALLED_APPS = [
 
 - **Interactive Side Filters**
 
+- **Custom Login Styling**
+
 <p align="center">
   <img src="https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpiha84RmWCKrO4FPYthfL4AfwLuQpCWJyjg2jksP84U6euTQ4cSduMCTuH-6PQc7PppA8KoZHiOvIBW7urUXNkq7-36AQ=w1360-h633" alt="Logo" width="100%">
 </p>

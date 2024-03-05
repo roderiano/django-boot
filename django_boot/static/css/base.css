@@ -28,14 +28,14 @@
 
 .content {
     transition: margin-left 0.3s;
-    padding-top: 40px;
-    margin-left: 290px;
-    width: calc(100% - 330px);
+    padding-top: 30px;
+    margin-left: 310px;
+    width: calc(100% - 380px);
 }
 
 .content.collapsed {
-    margin-left: 60px;
-    width: calc(100% - 60px);
+    margin-left: 90px;
+    width: calc(100% - 90px);
 }
 
 .navbar {
@@ -105,7 +105,7 @@ fieldset {
 
 form>div>.card {
     margin-top: 15px;
-    padding: 10px;
+    padding: 30px;
 }
 
 .overlay {
@@ -124,4 +124,21 @@ form>div>.card {
 .spinner-border {
     width: 4rem;
     height: 4rem;
+}
+
+.flex-container> :is(input[type=text], input[type=email]) {
+    width: 30%;
+}
+
+.form-row {
+    margin-bottom: 15px;
+}
+
+.errorlist {
+    list-style-type: none;
+    color: var(--bs-danger);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    margin: 0px;
+    padding: 0px;
 }

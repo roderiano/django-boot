@@ -5,10 +5,7 @@
   <script src="{% url 'admin:jsi18n' %}"></script>
   {{ media }}
 {% endblock %}
-{% block extrastyle %}
-  {{ block.super }}
-  <link rel="stylesheet" href="{% static "admin/css/forms.css" %}">
-{% endblock %}
+{% block extrastyle %}{{ block.super }}{% endblock %}
 {% block coltype %}colM{% endblock %}
 {% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }} change-form{% endblock %}
 {% if not is_popup %}

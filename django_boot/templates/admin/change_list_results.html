@@ -7,12 +7,12 @@
 {% endif %}
 {% if results %}
   <div class="table-responsive">
-    <table class="table table-sm">
+    <table class="table table-sm" id="result_list">
       <thead class="thead">
         <tr>
           {% for header in result_headers %}
             <th scope="col" {{ header.class_attrib }}>
-              <div class="d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center justify-content-start">
                 <div class="text-primary">
                   {% if header.sortable %}
                     <a href="{{ header.url_primary }}" class="link-secondary">{{ header.text|capfirst }}</a>

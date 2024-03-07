@@ -5,14 +5,21 @@
     {{ form.media }}
     <style>
         .centered-content {
-            position: fixed;
-            width: 30%;
+            position: absolute;
+            width: 90%;
+            max-width: 400px;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
         }
         .form-floating {
             margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .centered-content {
+                width: 80%;
+            }
         }
     </style>
 {% endblock %}

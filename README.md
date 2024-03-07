@@ -4,7 +4,7 @@
 </div>
 
 
-django-boot is a Django app framework designed for styling the admin interface with Bootstrap 5.
+django-boot is a theme designed for styling the django admin interface with Bootstrap 5.
 
 ## Getting Started
 
@@ -24,9 +24,8 @@ To use django-boot in your Django project, follow these steps:
 
 ```python3
 INSTALLED_APPS = [
-    ...,
     "django_boot.apps.django-bootConfig",
-    ...
+    ...,
 ]
 ```
 
@@ -35,7 +34,7 @@ INSTALLED_APPS = [
 
 ## Features
 
-- **Automatic Dark Mode**
+- **Dark Theme**
 
 - **Dynamic Form Styling**
 
@@ -45,10 +44,12 @@ INSTALLED_APPS = [
 
 - **Interactive Side Filters**
 
-- **Custom Login Styling**
+- **Login Styling**
+
+- **Responsive**
 
 <p align="center">
-  <img src="https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpiha84RmWCKrO4FPYthfL4AfwLuQpCWJyjg2jksP84U6euTQ4cSduMCTuH-6PQc7PppA8KoZHiOvIBW7urUXNkq7-36AQ=w1360-h633" alt="Logo" width="100%">
+  <img src="https://lh3.google.com/u/0/d/1levDzgvG9iM1q5fr1Bzp0qWgv-FG7JQl=w1360-h633-iv2" alt="Logo" width="100%">
 </p>
 
 

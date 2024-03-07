@@ -7,7 +7,8 @@
 {% endif %}
 {% if results %}
   <div class="table-responsive">
-    <table class="table table-sm" id="result_list">
+    <table class="table table-sm table-striped table-hover border"
+           id="result_list">
       <thead class="thead">
         <tr>
           {% for header in result_headers %}
@@ -52,7 +53,8 @@
           {% endfor %}
         </tr>
       </thead>
-      <tbody>
+      <tbody class="table-group-divider"
+             style="border-top-color: var(--bs-secondary)">
         {% for result in results %}
           {% if result.form and result.form.non_field_errors %}
             <tr>

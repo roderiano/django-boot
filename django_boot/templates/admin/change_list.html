@@ -2,8 +2,7 @@
 {% load i18n admin_urls static admin_list %}
 {% block extrastyle %}
   {{ block.super }}
-  {% if cl.formset %}
-  {% endif %}
+  {% if cl.formset %}{% endif %}
   {% if cl.formset or action_form %}
     <script src="{% url 'admin:jsi18n' %}"></script>
   {% endif %}
@@ -53,7 +52,7 @@
         <div id="content-main">
           <div class="container-fluid">
             <div class="row justify-content-start align-items-center">
-              <div class="col-3 mb-3">
+              <div class="col-6 mb-3">
                 {% block search %}
                   {% search_form cl %}
                 {% endblock %}

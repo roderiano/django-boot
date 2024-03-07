@@ -24,7 +24,7 @@ To use django-boot in your Django project, follow these steps:
 
 ```python3
 INSTALLED_APPS = [
-    "django_boot.apps.django-bootConfig",
+    "django_boot.apps.DjangoBootConfig",
     ...,
 ]
 ```

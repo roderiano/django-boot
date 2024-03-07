@@ -23,22 +23,24 @@
       </div>
     </div>
     {% if user.is_authenticated %}
-      <nav class="navbar navbar-expand-lg navbar-light border">
-        <div class="collapse navbar-collapse">
-          <ul class="navbar-nav ms-auto">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary border">
+        <div class="collapse navbar-collapse" id="navbarOptions">
+          <ul class="navbar-nav ms-auto mb-2">
             <li class="nav-item">
               <a class="nav-link" href="#" id="darkModeToggle" name="darkModeToggle">
-                <i class="fas fa-moon"></i>
+                <i class="fas fa-moon fa-lg"></i>
+                Theme
               </a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle"
+              <a class="nav-link"
                  href="#"
                  id="navbarDropdown"
                  role="button"
                  data-bs-toggle="dropdown"
                  aria-expanded="false">
-                <i class="fas fa-user"></i>
+                <i class="fas fa-user fa-lg"></i>
+                Account
               </a>
               <ul class="dropdown-menu dropdown-menu-end"
                   aria-labelledby="navbarDropdown">
